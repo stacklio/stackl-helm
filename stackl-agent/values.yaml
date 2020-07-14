@@ -1,0 +1,31 @@
+image:
+  pullPolicy: Always
+
+mode: prod
+
+stacklAgent:
+  image: stacklio/stackl-agent:0.2.0dev
+  name: stackl-agent
+  replicaCount: 1
+  stacklHost:  stackl-core:8080
+  secretHandler: base64
+  agentName: common
+  agentType: kubernetes
+  redisHost: stackl-redis
+  redisPort: 6379
+  # vaultAddr: https://vault.example.com
+  # vaultRole: stackl
+  # vaultMountPoint: auth/kubernetes
+
+# example imagePullSecrets: [name: pull-secret-name]
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+log_level: debug
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

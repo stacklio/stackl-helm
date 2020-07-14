@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ template "stackl.core" . }}"
+  labels:
+    {{- include "stackl.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.stacklCore.serviceType }}
+  ports:
+    - port: 8080
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "stackl.selectorLabels" . | nindent 4 }}
+    component: core

@@ -1,0 +1,9 @@
+apiVersion: v2
+name: stackl
+description: Stackl description
+
+type: application
+
+version: v0.1.2
+
+appVersion: v0.1.2

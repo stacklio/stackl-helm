@@ -1,0 +1,23 @@
+{{- if .Values.stacklCore.ingressRoute.enabled -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  annotations:
+  {{- range $key, $value := .Values.stacklCore.ingressRoute.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+  name: "{{ template "stackl.core" . }}"
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`{{ .Values.stacklCore.ingressRoute.host }}`)
+    services:
+    - name: "{{ template "stackl.core" . }}"
+      port: 8080
+  {{- if .Values.stacklCore.ingressRoute.tls }}
+  tls:
+{{ toYaml .Values.stacklCore.ingressRoute.tls | indent 4 }}
+  {{- end }}
+{{- end }}

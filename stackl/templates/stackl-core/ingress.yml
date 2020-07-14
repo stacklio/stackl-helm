@@ -1,0 +1,26 @@
+{{- if .Values.stacklCore.ingress.enabled -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ template "stackl.core" . }}"
+  labels:
+    {{- include "stackl.labels" . | nindent 4 }}
+    component: core
+  annotations:
+  {{- range $key, $value := .Values.stacklCore.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+spec:
+  rules:
+    - host: {{ .Values.stacklCore.ingress.hostname }}
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: "{{ template "stackl.core" . }}"
+              servicePort: 8080
+  {{- if .Values.stacklCore.ingress.tls }}
+  tls:
+{{ toYaml .Values.stacklCore.ingress.tls | indent 4 }}
+  {{- end }}
+{{- end }}
