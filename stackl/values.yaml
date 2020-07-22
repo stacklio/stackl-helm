@@ -23,11 +23,8 @@ taskBroker:
 messageChannel:
   type: Redis
 
-agentBroker:
-  type: grpc
-
 stacklCore:
-  image: stacklio/stackl-core:0.2.0dev
+  image: stacklio/stackl-core:0.2.0rc1
   name: stackl-core
   serviceType: NodePort
   ingress:
@@ -37,20 +34,15 @@ stacklCore:
       # kubernetes.io/ingress.class: traefik
       # traefik.ingress.kubernetes.io/frontend-entry-points: https
     tls:
-      # - hosts:
-      #   - stackl.example.com
-      #   secretName: stackl
+      - hosts:
+        - stackl.example.com
+        secretName: stackl
   ingressRoute:
-    enabled: false
+    enabled: true
     host: stackl.example.com
     annotations: {}
     tls:
-      # secretName: stackl
-  replicaCount: 1
-
-stacklWorker:
-  image: stacklio/stackl-worker:0.2.0dev
-  name: stackl-worker
+      secretName: stackl
   replicaCount: 1
 
 stacklRedis:
@@ -77,13 +69,6 @@ stacklOpa:
     tls:
       # secretName: opa
   replicaCount: 1
-
-stacklJobBroker:
-  image: stacklio/stackl-job-broker:0.2.0dev
-  name: stackl-job-broker
-  serviceType: NodePort
-  replicaCount: 1
-
 
 # example imagePullSecrets: [name: pull-secret-name]
 imagePullSecrets: []
