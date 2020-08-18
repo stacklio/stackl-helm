@@ -17,14 +17,8 @@ datastore:
 #  type: LFS
 #  path: /lfs_store
 
-taskBroker:
-  type: Custom
-
-messageChannel:
-  type: Redis
-
 stacklCore:
-  image: stacklio/stackl-core:0.2.0rc1
+  image: stacklio/stackl-core:v0.2.0
   name: stackl-core
   serviceType: NodePort
   ingress:
@@ -46,12 +40,12 @@ stacklCore:
   replicaCount: 1
 
 stacklRedis:
-  image: redis:5.0.5
+  image: stacklio/redis:v5.0.3
   name: stackl-redis
   replicaCount: 1
 
 stacklOpa:
-  image: openpolicyagent/opa:0.20.5
+  image: stacklio/opa:v0.21.1
   name: stackl-opa
   ingress:
     enabled: true

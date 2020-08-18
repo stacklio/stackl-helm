@@ -64,3 +64,39 @@ spec:
             - name: "VAULT_MOUNT_POINT"
               value: "{{ . }}"
             {{- end }}
+            {{- with .Values.stacklAgent.conjurVerify }}
+            - name: CONJUR_VERIFY
+              value: "{{ . }}"
+            {{- end }}
+            {{- with .Values.stacklAgent.authenticatorClientContainerName }}
+            - name: AUTHENTICATOR_CLIENT_CONTAINER_NAME
+              value: "{{ . }}"
+            {{-end }}
+            {{- with .Values.stacklAgent.conjurApplianceUrl }}
+            - name: CONJUR_APPLIANCE_URL
+              value: "{{ . }}"
+            {{-end }}
+            {{- with .Values.stacklAgent.conjurAccount }}
+            - name: CONJUR_ACCOUNT
+              value: "{{ . }}"
+            {{-end }}
+            {{- with .Values.stacklAgent.conjurAuthnTokenFile }}
+            - name: CONJUR_AUTHN_TOKEN_FILE
+              value: "{{ . }}"
+            {{-end }}
+            {{- with .Values.stacklAgent.conjurAuthnUrl }}
+            - name: CONJUR_AUTHN_URL
+              value: "{{ . }}"
+            {{-end }}
+            {{- with .Values.stacklAgent.conjurAuthnLogin }}
+            - name: CONJUR_AUTHN_LOGIN
+              value: "{{ . }}"
+            {{-end }}
+            {{- with .Values.stacklAgent.conjurSslConfigMap }}
+            - name: CONJUR_SSL_CONFIG_MAP
+              value: "{{ . }}"
+            {{-end }}
+            {{- with .Values.stacklAgent.conjurSslConfigMapKey }}
+            - name: CONJUR_SSL_CONFIG_MAP_KEY
+              value: "{{ . }}"
+            {{-end }}
