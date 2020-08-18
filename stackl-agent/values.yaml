@@ -16,15 +16,15 @@ stacklAgent:
   # vaultAddr: https://vault.example.com
   # vaultRole: stackl
   # vaultMountPoint: auth/kubernetes
-  conjurVerify: "False"
-  authenticatorClientContainerName: conjur-auth-client
-  conjurApplianceUrl: https://conjur-conjur-oss.conjur.svc.cluster.local
-  conjurAccount: default
-  conjurAuthnTokenFile: /run/conjur/access-token
-  conjurAuthnUrl: https://conjur-conjur-oss.conjur.svc.cluster.local/authn-k8s/stackl
-  conjurAuthnLogin: host/conjur/authn-k8s/stackl/apps/conjur-namespaceke
-  conjurSslConfigMap: conjur-cert
-  conjurSslConfigMapKey: ssl-certificate
+  # conjurVerify: "False"
+  # authenticatorClientContainerName: conjur-auth-client
+  # conjurApplianceUrl: https://conjur-conjur-oss.conjur.svc.cluster.local
+  # conjurAccount: default
+  # conjurAuthnTokenFile: /run/conjur/access-token
+  # conjurAuthnUrl: https://conjur-conjur-oss.conjur.svc.cluster.local/authn-k8s/stackl
+  # conjurAuthnLogin: host/conjur/authn-k8s/stackl/apps/conjur-namespaceke
+  # conjurSslConfigMap: conjur-cert
+  # conjurSslConfigMapKey: ssl-certificate
 
 # example imagePullSecrets: [name: pull-secret-name]
 imagePullSecrets: []
