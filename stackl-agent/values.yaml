@@ -4,7 +4,7 @@ image:
 mode: prod
 
 stacklAgent:
-  image: stacklio/stackl-agent:0.2.0rc1
+  image: stacklio/stackl-agent:v0.2.0
   name: stackl-agent
   replicaCount: 1
   stacklHost:  stackl-core:8080
@@ -13,9 +13,20 @@ stacklAgent:
   agentType: kubernetes
   redisHost: stackl-redis
   redisPort: 6379
+  # secretHandler: vault
   # vaultAddr: https://vault.example.com
   # vaultRole: stackl
   # vaultMountPoint: auth/kubernetes
+  # conjurVerify: "False"
+  # authenticatorClientContainerName: conjur-auth-client
+  # secretHandler: conjur
+  # conjurApplianceUrl: https://conjur-conjur-oss.conjur.svc.cluster.local
+  # conjurAccount: default
+  # conjurAuthnTokenFile: /run/conjur/access-token
+  # conjurAuthnUrl: https://conjur-conjur-oss.conjur.svc.cluster.local/authn-k8s/stackl
+  # conjurAuthnLogin: host/conjur/authn-k8s/stackl/apps/conjur-namespace
+  # conjurSslConfigMap: conjur-cert
+  # conjurSslConfigMapKey: ssl-certificate
 
 # example imagePullSecrets: [name: pull-secret-name]
 imagePullSecrets: []
