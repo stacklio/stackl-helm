@@ -24,7 +24,7 @@ stacklAgent:
   # conjurAccount: default
   # conjurAuthnTokenFile: /run/conjur/access-token
   # conjurAuthnUrl: https://conjur-conjur-oss.conjur.svc.cluster.local/authn-k8s/stackl
-  # conjurAuthnLogin: host/conjur/authn-k8s/stackl/apps/conjur-namespaceke
+  # conjurAuthnLogin: host/conjur/authn-k8s/stackl/apps/conjur-namespace
   # conjurSslConfigMap: conjur-cert
   # conjurSslConfigMapKey: ssl-certificate
 
