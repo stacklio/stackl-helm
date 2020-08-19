@@ -8,16 +8,18 @@ stacklAgent:
   name: stackl-agent
   replicaCount: 1
   stacklHost:  stackl-core:8080
-  secretHandler: conjur
+  secretHandler: base64
   agentName: common
   agentType: kubernetes
   redisHost: stackl-redis
   redisPort: 6379
+  # secretHandler: vault
   # vaultAddr: https://vault.example.com
   # vaultRole: stackl
   # vaultMountPoint: auth/kubernetes
   # conjurVerify: "False"
   # authenticatorClientContainerName: conjur-auth-client
+  # secretHandler: conjur
   # conjurApplianceUrl: https://conjur-conjur-oss.conjur.svc.cluster.local
   # conjurAccount: default
   # conjurAuthnTokenFile: /run/conjur/access-token
