@@ -4,7 +4,7 @@ image:
 mode: prod
 
 stacklAgent:
-  image: stacklio/stackl-agent:v0.2.0
+  image: stacklio/stackl-agent:v0.2.1
   name: stackl-agent
   replicaCount: 1
   stacklHost:  stackl-core:8080
