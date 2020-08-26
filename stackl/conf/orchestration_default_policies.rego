@@ -14,7 +14,14 @@ solutions = {"fulfilled": true, "services": result} {
 }
 
 else = {"fulfilled": false, "msg": msg} {
-	msg := "Couldn't find a target for each service"
+	result := {s: targets |
+		service := input.services[s]
+		targets := targets_for_service(service)
+	}
+
+	services_no_targets := { svc | tgt = result[svc]; tgt == []}
+
+	msg := sprintf("Couldn't find a target for services %v", [services_no_targets])
 }
 
 #Rule: get basic suitable infrastructure target for the service
@@ -29,7 +36,7 @@ targets_for_service(service) = targets {
 
 #Function
 satisfies_resources(service, target) {
-	# service.resource_requirements[resource] iterates over keys.
+	# service.resource_requirements[resource] iterates over keys. 
 	# The array contains a true or false for each resource the target satisfies
 	# the value is converted to bytes by using the parse_bytes function
 	satisfied_resource_array := [tgt_res_satisfies_srv |
