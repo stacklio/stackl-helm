@@ -7,13 +7,13 @@ stacklAgent:
   image: stacklio/stackl-agent:v0.2.2
   name: stackl-agent
   replicaCount: 1
-  stacklHost:  stackl-core:8080
+  stacklHost: http://stackl-core:8080
   secretHandler: base64
   agentName: common
   agentType: kubernetes
   redisHost: stackl-redis
   redisPort: 6379
-  stacklCliImage: stacklio/stackl-agent:v0.2.2
+  stacklCliImage: stacklio/stackl-cli:v0.2.2
   # secretHandler: vault
   # vaultAddr: https://vault.example.com
   # vaultRole: stackl
