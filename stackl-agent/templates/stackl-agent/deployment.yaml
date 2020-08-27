@@ -52,6 +52,8 @@ spec:
               value: "{{ .Values.stacklAgent.redisHost }}"
             - name: "REDIS_PORT"
               value: "{{ .Values.stacklAgent.redisPort }}"
+            - name: "STACKL_CLI_IMAGE"
+              value: "{{ .Values.stacklAgent.stacklCliImage }}"
             {{- with .Values.stacklAgent.vaultAddr }}
             - name: "VAULT_ADDR"
               value: "{{ . }}"

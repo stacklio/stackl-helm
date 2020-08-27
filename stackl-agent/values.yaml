@@ -4,7 +4,7 @@ image:
 mode: prod
 
 stacklAgent:
-  image: stacklio/stackl-agent:v0.2.1
+  image: stacklio/stackl-agent:v0.2.2
   name: stackl-agent
   replicaCount: 1
   stacklHost:  stackl-core:8080
@@ -13,6 +13,7 @@ stacklAgent:
   agentType: kubernetes
   redisHost: stackl-redis
   redisPort: 6379
+  stacklCliImage: stacklio/stackl-agent:v0.2.2
   # secretHandler: vault
   # vaultAddr: https://vault.example.com
   # vaultRole: stackl
