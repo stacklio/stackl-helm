@@ -48,7 +48,7 @@ spec:
             - name: "STACKL_REDIS_PORT"
               value: "6379"
             - name: "STACKL_OPA_HOST"
-              value: "{{ template "stackl.opa" . }}:8181"
+              value: "http://{{ template "stackl.opa" . }}:8181"
             - name: "WEB_CONCURRENCY"
               value: "1"
             - name: "PYTHONUNBUFFERED"
