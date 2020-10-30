@@ -18,7 +18,7 @@ datastore:
 #  path: /lfs_store
 
 stacklCore:
-  image: stacklio/stackl-core:v0.2.2
+  image: stacklio/stackl-core:v0.2.5
   name: stackl-core
   serviceType: NodePort
   ingress:
@@ -28,11 +28,11 @@ stacklCore:
       # kubernetes.io/ingress.class: traefik
       # traefik.ingress.kubernetes.io/frontend-entry-points: https
     tls:
-      - hosts:
-        - stackl.example.com
-        secretName: stackl
+      # - hosts:
+      #   - stackl.example.com
+      #   secretName: stackl
   ingressRoute:
-    enabled: true
+    enabled: false
     host: stackl.example.com
     annotations: {}
     tls:
