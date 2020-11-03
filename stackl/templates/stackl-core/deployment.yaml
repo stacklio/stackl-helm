@@ -39,8 +39,10 @@ spec:
           env:
             - name: "STACKL_STORE"
               value: "{{ .Values.datastore.type }}"
+            {{- if eq .Values.datastore.type "LFS" }}
             - name: "STACKL_DATASTORE_PATH"
               value: "{{ .Values.datastore.path }}"
+            {{- end }}
             - name: "LOGLEVEL"
               value: "DEBUG"
             - name: "STACKL_REDIS_HOST"

@@ -9,41 +9,46 @@ Stackl description
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| datastore.type | string | `"Redis"` |  |
+| datastore.path | string | `"/lfs_store"` | Datastore path. Only applicable when datastore is LFS |
+| datastore.type | string | `"Redis"` | Datastore type. Options are [Redis, LFS] |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| imagePullSecrets | list | `[]` |  |
+| imagePullSecrets | list | `[]` | example imagePullSecrets: [name: pull-secret-name] |
 | log_level | string | `"debug"` |  |
 | mode | string | `"prod"` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
-| stacklCore.image | string | `"stacklio/stackl-core:v0.2.5"` |  |
-| stacklCore.ingress.annotations | string | `nil` |  |
-| stacklCore.ingress.enabled | bool | `true` |  |
-| stacklCore.ingress.hostname | string | `"stackl.example.com"` |  |
+| stacklCore.image | string | `"stacklio/stackl-core:v0.2.5"` | Stackl-core image |
+| stacklCore.ingress.annotations | string | `nil` | Ingress annotation |
+| stacklCore.ingress.enabled | bool | `true` | Enable ingress creation |
+| stacklCore.ingress.hostname | string | `"stackl.example.com"` | Ingress hostname |
 | stacklCore.ingress.tls | string | `nil` |  |
-| stacklCore.ingressRoute.annotations | object | `{}` |  |
-| stacklCore.ingressRoute.enabled | bool | `false` |  |
-| stacklCore.ingressRoute.host | string | `"stackl.example.com"` |  |
-| stacklCore.ingressRoute.tls.secretName | string | `"stackl"` |  |
-| stacklCore.name | string | `"stackl-core"` |  |
-| stacklCore.replicaCount | int | `1` |  |
-| stacklCore.serviceType | string | `"NodePort"` |  |
-| stacklOpa.image | string | `"stacklio/opa:v0.21.1"` |  |
-| stacklOpa.ingress.annotations | string | `nil` |  |
-| stacklOpa.ingress.enabled | bool | `true` |  |
-| stacklOpa.ingress.hostname | string | `"opa.example.com"` |  |
+| stacklCore.ingressRoute.annotations | object | `{}` | Ingress route annotations |
+| stacklCore.ingressRoute.enabled | bool | `false` | Enable ingress route creation |
+| stacklCore.ingressRoute.host | string | `"stackl.example.com"` | Ingress route hostname |
+| stacklCore.ingressRoute.tls | object | `{"secretName":"stackl"}` | Ingress route TLS configuration |
+| stacklCore.name | string | `"stackl-core"` | Stackl core name |
+| stacklCore.replicaCount | int | `1` | Stackl core replicas |
+| stacklCore.serviceType | string | `"NodePort"` | Stackl core service type |
+| stacklOpa.image | string | `"stacklio/opa:v0.21.1"` | Stackl OPA image |
+| stacklOpa.ingress.annotations | string | `nil` | Ingress annotation |
+| stacklOpa.ingress.enabled | bool | `true` | Enable ingress route creation |
+| stacklOpa.ingress.hostname | string | `"opa.example.com"` | Ingress hostname |
 | stacklOpa.ingress.tls | string | `nil` |  |
-| stacklOpa.ingressRoute.annotations | object | `{}` |  |
-| stacklOpa.ingressRoute.enabled | bool | `false` |  |
-| stacklOpa.ingressRoute.host | string | `"opa.example.com"` |  |
-| stacklOpa.ingressRoute.tls | string | `nil` |  |
-| stacklOpa.name | string | `"stackl-opa"` |  |
-| stacklOpa.replicaCount | int | `1` |  |
-| stacklRedis.image | string | `"stacklio/redis:v5.0.3"` |  |
-| stacklRedis.name | string | `"stackl-redis"` |  |
-| stacklRedis.replicaCount | int | `1` |  |
-| storage.pvc.size | string | `"1Gi"` |  |
+| stacklOpa.ingressRoute.annotations | object | `{}` | Ingress route annotations |
+| stacklOpa.ingressRoute.enabled | bool | `false` | Enable ingress route creation |
+| stacklOpa.ingressRoute.host | string | `"opa.example.com"` | Ingress route hostname |
+| stacklOpa.ingressRoute.tls | string | `nil` | Ingress route TLS configuration |
+| stacklOpa.name | string | `"stackl-opa"` | Stackl OPA deployment name |
+| stacklOpa.replicaCount | int | `1` | Stackl OPA replicas |
+| stacklRedis.image | string | `"stacklio/redis:v5.0.3"` | Stackl redis image |
+| stacklRedis.name | string | `"stackl-redis"` | Stackl redis deployment name |
+| stacklRedis.replicaCount | int | `1` | Stackl redis replicas |
+| storage.nfs.path | string | `nil` | nfs path |
+| storage.nfs.server | string | `nil` | nfs server |
+| storage.nfs.subPath | string | `nil` | Subpath for the volume mount |
+| storage.pvc.size | string | `"1Gi"` | PVC size |
+| storage.pvc.storageClassName | string | `nil` | StorageClassName for PVC |
 | tolerations | list | `[]` |  |
 
 ----------------------------------------------
