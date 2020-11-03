@@ -2,7 +2,14 @@
 
 ![Version: v0.2.5](https://img.shields.io/badge/Version-v0.2.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.5](https://img.shields.io/badge/AppVersion-v0.2.5-informational?style=flat-square)
 
-Stackl description
+Stackl Helm chart
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| GBrawl | frederic.vanreet@icloud.com | https://github.com/gbrawl |
+| stgrace | stefgraces@hotmail.com | https://github.com/stgrace |
 
 ## Values
 
@@ -44,8 +51,9 @@ Stackl description
 | stacklRedis.image | string | `"stacklio/redis:v5.0.3"` | Stackl redis image |
 | stacklRedis.name | string | `"stackl-redis"` | Stackl redis deployment name |
 | stacklRedis.replicaCount | int | `1` | Stackl redis replicas |
-| storage.nfs.path | string | `nil` | nfs path |
-| storage.nfs.server | string | `nil` | nfs server |
+| storage.nfs.enabled | bool | `false` | Use NFS |
+| storage.nfs.path | string | `nil` | NFS path |
+| storage.nfs.server | string | `nil` | NFS server |
 | storage.nfs.subPath | string | `nil` | Subpath for the volume mount |
 | storage.pvc.size | string | `"1Gi"` | PVC size |
 | storage.pvc.storageClassName | string | `nil` | StorageClassName for PVC |
