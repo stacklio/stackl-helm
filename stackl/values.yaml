@@ -10,9 +10,11 @@ storage:
     # -- StorageClassName for PVC
     storageClassName:
   nfs:
-    # -- nfs server
+    # -- Use NFS
+    enabled: false
+    # -- NFS server
     server:
-    # -- nfs path
+    # -- NFS path
     path:
     # -- Subpath for the volume mount
     subPath:

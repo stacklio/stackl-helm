@@ -1,5 +1,5 @@
 {{- if .Values.storage.pvc }}
-{{- if not .Values.storage.nfs }}
+{{- if not .Values.storage.nfs.enabled }}
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1

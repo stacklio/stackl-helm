@@ -43,14 +43,16 @@ spec:
         - name: redis-config
           configMap:
             name: "{{ template "stackl.redis" . }}"
+  {{- if .Values.storage.nfs.enabled }}
   {{- with .Values.storage.nfs }}
         - name: redis-volume
           nfs:
             server: {{ .server }}
             path: {{ .path }}
   {{- end }}
+  {{- end }}
   {{- if .Values.storage.pvc }}
-  {{- if not .Values.storage.nfs }}
+  {{- if not .Values.storage.nfs.enabled }}
         - name: redis-volume
           persistentVolumeClaim:
             claimName: "{{ template "stackl.redis" . }}"
