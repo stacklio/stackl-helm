@@ -43,62 +43,70 @@ spec:
             - name: "PYTHONUNBUFFERED"
               value: "TRUE"
             - name: "SECRET_HANDLER"
-              value: "{{ .Values.stacklAgent.secretHandler }}"
+              value: "{{ .Values.stacklAgent.secretHandler.type }}"
             - name: "AGENT_TYPE"
               value: "kubernetes"
             - name: "AGENT_NAME"
               value: "{{ .Values.stacklAgent.agentName }}"
+            {{- with .Values.stacklAgent.redisPassword }}
+            - name: "REDIS_PASSWORD"
+              value: "{{ . }}"
+            {{- end }}
             - name: "REDIS_HOST"
               value: "{{ .Values.stacklAgent.redisHost }}"
             - name: "REDIS_PORT"
               value: "{{ .Values.stacklAgent.redisPort }}"
             - name: "STACKL_CLI_IMAGE"
               value: "{{ .Values.stacklAgent.stacklCliImage }}"
-            {{- with .Values.stacklAgent.vaultAddr }}
+            {{- if eq .Values.stacklAgent.secretHandler.type "vault" }}
+            {{- with .Values.stacklAgent.secretHandler.vault.vaultAddr }}
             - name: "VAULT_ADDR"
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.vaultRole }}
+            {{- with .Values.stacklAgent.secretHandler.vault.vaultRole }}
             - name: "VAULT_ROLE"
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.vaultMountPoint }}
+            {{- with .Values.stacklAgent.secretHandler.vault.vaultMountPoint }}
             - name: "VAULT_MOUNT_POINT"
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.conjurVerify }}
+            {{- end }}
+            {{- if eq .Values.stacklAgent.secretHandler.type "conjur" }}
+            {{- with .Values.stacklAgent.secretHandler.conjur.conjurVerify }}
             - name: CONJUR_VERIFY
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.authenticatorClientContainerName }}
+            {{- with .Values.stacklAgent.secretHandler.conjur.authenticatorClientContainerName }}
             - name: AUTHENTICATOR_CLIENT_CONTAINER_NAME
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.conjurApplianceUrl }}
+            {{- with .Values.stacklAgent.secretHandler.conjur.conjurApplianceUrl }}
             - name: CONJUR_APPLIANCE_URL
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.conjurAccount }}
+            {{- with .Values.stacklAgent.secretHandler.conjur.conjurAccount }}
             - name: CONJUR_ACCOUNT
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.conjurAuthnTokenFile }}
+            {{- with .Values.stacklAgent.secretHandler.conjur.conjurAuthnTokenFile }}
             - name: CONJUR_AUTHN_TOKEN_FILE
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.conjurAuthnUrl }}
+            {{- with .Values.stacklAgent.secretHandler.conjur.conjurAuthnUrl }}
             - name: CONJUR_AUTHN_URL
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.conjurAuthnLogin }}
+            {{- with .Values.stacklAgent.secretHandler.conjur.conjurAuthnLogin }}
             - name: CONJUR_AUTHN_LOGIN
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.conjurSslConfigMap }}
+            {{- with .Values.stacklAgent.secretHandler.conjur.conjurSslConfigMap }}
             - name: CONJUR_SSL_CONFIG_MAP
               value: "{{ . }}"
             {{- end }}
-            {{- with .Values.stacklAgent.conjurSslConfigMapKey }}
+            {{- with .Values.stacklAgent.secretHandler.conjur.conjurSslConfigMapKey }}
             - name: CONJUR_SSL_CONFIG_MAP_KEY
               value: "{{ . }}"
+            {{- end }}
             {{- end }}

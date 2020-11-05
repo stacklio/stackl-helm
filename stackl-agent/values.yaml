@@ -4,40 +4,53 @@ image:
 mode: prod
 
 stacklAgent:
-  image: stacklio/stackl-agent:v0.2.2
+  image: quay.io/stackl/stackl-agent:v0.2.5
   name: stackl-agent
   replicaCount: 1
+  # -- Stackl-core hostname. Defaults to stackl-core service
   stacklHost: http://stackl-core:8080
-  secretHandler: base64
+  secretHandler:
+  # -- Secret handler to be used. Options are [base64, vault, conjur]
+    type: conjur
+    vault:
+      # -- Vault address
+      vaultAddr: https://vault.example.com
+      # -- Vault role to use Kubernetes authentication
+      vaultRole: stackl
+      # -- Vault Kubernetes authentication config endpoint
+      vaultMountPoint: auth/kubernetes
+    conjur:
+      # -- Verify Conjur requests
+      conjurVerify: "False"
+      # -- Name of the container authenticating with Conjur
+      authenticatorClientContainerName: conjur-auth-client
+      # -- Conjur URL
+      conjurApplianceUrl: https://conjur-conjur-oss.conjur.svc.cluster.local
+      # -- The account name designated to the Conjur appliance during initial configuration
+      conjurAccount: default
+      # -- File to write Conjur access token to
+      conjurAuthnTokenFile: /run/conjur/access-token
+      # -- Specify the credential service used to log into Conjur
+      conjurAuthnUrl: https://conjur-conjur-oss.conjur.svc.cluster.local/authn-k8s/stackl
+      # -- Specify the Conjur host that authenticates to Conjur. Set this value to a host id that is defined in policy
+      conjurAuthnLogin: host/conjur/authn-k8s/stackl/apps/conjur-namespace
+      # -- Conjur config map with public SSL cert
+      conjurSslConfigMap: conjur-cert
+      # -- Conjur config map Key. This must be the public SSL certificate value required for connecting to the Conjur follower service
+      conjurSslConfigMapKey: ssl-certificate
+  # -- Name of the agent. This can be used to target an agent
   agentName: common
   agentType: kubernetes
+  # -- Stackl-Redis password
+  redisPassword: ""
+  # -- Stackl-Redis hostname. Defaults to Stackl-Redis service
   redisHost: stackl-redis
+  # -- Stackl-Redis port
   redisPort: 6379
-  stacklCliImage: stacklio/stackl-cli:v0.2.2
-  # secretHandler: vault
-  # vaultAddr: https://vault.example.com
-  # vaultRole: stackl
-  # vaultMountPoint: auth/kubernetes
-  # conjurVerify: "False"
-  # authenticatorClientContainerName: conjur-auth-client
-  # secretHandler: conjur
-  # conjurApplianceUrl: https://conjur-conjur-oss.conjur.svc.cluster.local
-  # conjurAccount: default
-  # conjurAuthnTokenFile: /run/conjur/access-token
-  # conjurAuthnUrl: https://conjur-conjur-oss.conjur.svc.cluster.local/authn-k8s/stackl
-  # conjurAuthnLogin: host/conjur/authn-k8s/stackl/apps/conjur-namespace
-  # conjurSslConfigMap: conjur-cert
-  # conjurSslConfigMapKey: ssl-certificate
+  # -- Stackl-CLI image
+  stacklCliImage: quay.io/stackl/stackl-cli:v0.2.5
 
-# example imagePullSecrets: [name: pull-secret-name]
+# -- Example imagePullSecrets: [name: pull-secret-name]
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
-log_level: debug
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}

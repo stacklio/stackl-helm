@@ -5,51 +5,79 @@ mode: prod # dev
 
 storage:
   pvc:
+    # -- PVC size
     size: 1Gi
-    # storageClassName:
-  # nfs:
-  #   server:
-  #   path:
-  #   subPath:
+    # -- StorageClassName for PVC
+    storageClassName:
+  nfs:
+    # -- Use NFS
+    enabled: false
+    # -- NFS server
+    server:
+    # -- NFS path
+    path:
+    # -- Subpath for the volume mount
+    subPath:
 
 datastore:
+  # -- Datastore type. Options are [Redis, LFS]
   type: Redis
-#  type: LFS
-#  path: /lfs_store
+  # -- Datastore path. Only applicable when datastore is LFS
+  path: /lfs_store
 
 stacklCore:
-  image: stacklio/stackl-core:v0.2.2
+  # -- Stackl-core image
+  image: stacklio/stackl-core:v0.2.5
+  # -- Stackl core name
   name: stackl-core
+  # -- Stackl core service type
   serviceType: NodePort
   ingress:
+    # -- Enable ingress creation
     enabled: true
+    # -- Ingress hostname
     hostname: stackl.example.com
+    # -- Ingress annotation
     annotations:
       # kubernetes.io/ingress.class: traefik
       # traefik.ingress.kubernetes.io/frontend-entry-points: https
+    # -- Ingress TLS configuration
     tls:
-      - hosts:
-        - stackl.example.com
-        secretName: stackl
+      # - hosts:
+      #   - stackl.example.com
+      #   secretName: stackl
   ingressRoute:
-    enabled: true
+    # -- Enable ingress route creation
+    enabled: false
+    # -- Ingress route hostname
     host: stackl.example.com
+    # -- Ingress route annotations
     annotations: {}
+    # -- Ingress route TLS configuration
     tls:
       secretName: stackl
+  # -- Stackl core replicas
   replicaCount: 1
 
 stacklRedis:
+  # -- Stackl redis image
   image: stacklio/redis:v5.0.3
+  # -- Stackl redis deployment name
   name: stackl-redis
+  # -- Stackl redis replicas
   replicaCount: 1
 
 stacklOpa:
+  # -- Stackl OPA image
   image: stacklio/opa:v0.21.1
+  # -- Stackl OPA deployment name
   name: stackl-opa
   ingress:
+    # -- Enable ingress route creation
     enabled: true
+    # -- Ingress hostname
     hostname: opa.example.com
+    # -- Ingress annotation
     annotations:
       # kubernetes.io/ingress.class: traefik
       # traefik.ingress.kubernetes.io/frontend-entry-points: https
@@ -57,14 +85,19 @@ stacklOpa:
       # - hosts:
       #   - opa.example.com
   ingressRoute:
+    # -- Enable ingress route creation
     enabled: false
+    # -- Ingress route hostname
     host: opa.example.com
+    # -- Ingress route annotations
     annotations: {}
+    # -- Ingress route TLS configuration
     tls:
       # secretName: opa
+  # -- Stackl OPA replicas
   replicaCount: 1
 
-# example imagePullSecrets: [name: pull-secret-name]
+# -- example imagePullSecrets: [name: pull-secret-name]
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
