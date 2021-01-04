@@ -27,7 +27,7 @@ datastore:
 
 stacklCore:
   # -- Stackl-core image
-  image: stacklio/stackl-core:v0.2.5
+  image: stacklio/stackl-core:v0.3.0
   # -- Stackl core name
   name: stackl-core
   # -- Stackl core service type

@@ -1,48 +1,48 @@
 # stackl-agent
 
-![Version: v0.2.5](https://img.shields.io/badge/Version-v0.2.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.5](https://img.shields.io/badge/AppVersion-v0.2.5-informational?style=flat-square)
+![Version: v0.3.0](https://img.shields.io/badge/Version-v0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.3.0](https://img.shields.io/badge/AppVersion-v0.3.0-informational?style=flat-square)
 
 Stackl-agent Helm chart
 
 ## Maintainers
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| GBrawl | frederic.vanreet@icloud.com | https://github.com/gbrawl |
-| stgrace | stefgraces@hotmail.com | https://github.com/stgrace |
+| Name    | Email                       | Url                        |
+| ------- | --------------------------- | -------------------------- |
+| GBrawl  | frederic.vanreet@icloud.com | https://github.com/gbrawl  |
+| stgrace | stefgraces@hotmail.com      | https://github.com/stgrace |
 
 ## Values
 
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| fullnameOverride | string | `""` |  |
-| image.pullPolicy | string | `"Always"` |  |
-| imagePullSecrets | list | `[]` | Example imagePullSecrets: [name: pull-secret-name] |
-| mode | string | `"prod"` |  |
-| nameOverride | string | `""` |  |
-| stacklAgent.agentName | string | `"common"` | Name of the agent. This can be used to target an agent |
-| stacklAgent.agentType | string | `"kubernetes"` |  |
-| stacklAgent.image | string | `"quay.io/stackl/stackl-agent:v0.2.5"` |  |
-| stacklAgent.name | string | `"stackl-agent"` |  |
-| stacklAgent.redisHost | string | `"stackl-redis"` | Stackl-Redis hostname. Defaults to Stackl-Redis service |
-| stacklAgent.redisPassword | string | `""` | Stackl-Redis password |
-| stacklAgent.redisPort | int | `6379` | Stackl-Redis port |
-| stacklAgent.replicaCount | int | `1` |  |
-| stacklAgent.secretHandler.conjur.authenticatorClientContainerName | string | `"conjur-auth-client"` | Name of the container authenticating with Conjur |
-| stacklAgent.secretHandler.conjur.conjurAccount | string | `"default"` | The account name designated to the Conjur appliance during initial configuration |
-| stacklAgent.secretHandler.conjur.conjurApplianceUrl | string | `"https://conjur-conjur-oss.conjur.svc.cluster.local"` | Conjur URL |
-| stacklAgent.secretHandler.conjur.conjurAuthnLogin | string | `"host/conjur/authn-k8s/stackl/apps/conjur-namespace"` | Specify the Conjur host that authenticates to Conjur. Set this value to a host id that is defined in policy |
-| stacklAgent.secretHandler.conjur.conjurAuthnTokenFile | string | `"/run/conjur/access-token"` | File to write Conjur access token to |
-| stacklAgent.secretHandler.conjur.conjurAuthnUrl | string | `"https://conjur-conjur-oss.conjur.svc.cluster.local/authn-k8s/stackl"` | Specify the credential service used to log into Conjur |
-| stacklAgent.secretHandler.conjur.conjurSslConfigMap | string | `"conjur-cert"` | Conjur config map with public SSL cert |
-| stacklAgent.secretHandler.conjur.conjurSslConfigMapKey | string | `"ssl-certificate"` | Conjur config map Key. This must be the public SSL certificate value required for connecting to the Conjur follower service |
-| stacklAgent.secretHandler.conjur.conjurVerify | string | `"False"` | Verify Conjur requests |
-| stacklAgent.secretHandler.type | string | `"conjur"` | Secret handler to be used. Options are [base64, vault, conjur] |
-| stacklAgent.secretHandler.vault.vaultAddr | string | `"https://vault.example.com"` | Vault address |
-| stacklAgent.secretHandler.vault.vaultMountPoint | string | `"auth/kubernetes"` | Vault Kubernetes authentication config endpoint |
-| stacklAgent.secretHandler.vault.vaultRole | string | `"stackl"` | Vault role to use Kubernetes authentication |
-| stacklAgent.stacklCliImage | string | `"quay.io/stackl/stackl-cli:v0.2.5"` | Stackl-CLI image |
-| stacklAgent.stacklHost | string | `"http://stackl-core:8080"` | Stackl-core hostname. Defaults to stackl-core service |
+| Key                                                               | Type   | Default                                                                 | Description                                                                                                                 |
+| ----------------------------------------------------------------- | ------ | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| fullnameOverride                                                  | string | `""`                                                                    |                                                                                                                             |
+| image.pullPolicy                                                  | string | `"Always"`                                                              |                                                                                                                             |
+| imagePullSecrets                                                  | list   | `[]`                                                                    | Example imagePullSecrets: [name: pull-secret-name]                                                                          |
+| mode                                                              | string | `"prod"`                                                                |                                                                                                                             |
+| nameOverride                                                      | string | `""`                                                                    |                                                                                                                             |
+| stacklAgent.agentName                                             | string | `"common"`                                                              | Name of the agent. This can be used to target an agent                                                                      |
+| stacklAgent.agentType                                             | string | `"kubernetes"`                                                          |                                                                                                                             |
+| stacklAgent.image                                                 | string | `"quay.io/stackl/stackl-agent:v0.3.0"`                                  |                                                                                                                             |
+| stacklAgent.name                                                  | string | `"stackl-agent"`                                                        |                                                                                                                             |
+| stacklAgent.redisHost                                             | string | `"stackl-redis"`                                                        | Stackl-Redis hostname. Defaults to Stackl-Redis service                                                                     |
+| stacklAgent.redisPassword                                         | string | `""`                                                                    | Stackl-Redis password                                                                                                       |
+| stacklAgent.redisPort                                             | int    | `6379`                                                                  | Stackl-Redis port                                                                                                           |
+| stacklAgent.replicaCount                                          | int    | `1`                                                                     |                                                                                                                             |
+| stacklAgent.secretHandler.conjur.authenticatorClientContainerName | string | `"conjur-auth-client"`                                                  | Name of the container authenticating with Conjur                                                                            |
+| stacklAgent.secretHandler.conjur.conjurAccount                    | string | `"default"`                                                             | The account name designated to the Conjur appliance during initial configuration                                            |
+| stacklAgent.secretHandler.conjur.conjurApplianceUrl               | string | `"https://conjur-conjur-oss.conjur.svc.cluster.local"`                  | Conjur URL                                                                                                                  |
+| stacklAgent.secretHandler.conjur.conjurAuthnLogin                 | string | `"host/conjur/authn-k8s/stackl/apps/conjur-namespace"`                  | Specify the Conjur host that authenticates to Conjur. Set this value to a host id that is defined in policy                 |
+| stacklAgent.secretHandler.conjur.conjurAuthnTokenFile             | string | `"/run/conjur/access-token"`                                            | File to write Conjur access token to                                                                                        |
+| stacklAgent.secretHandler.conjur.conjurAuthnUrl                   | string | `"https://conjur-conjur-oss.conjur.svc.cluster.local/authn-k8s/stackl"` | Specify the credential service used to log into Conjur                                                                      |
+| stacklAgent.secretHandler.conjur.conjurSslConfigMap               | string | `"conjur-cert"`                                                         | Conjur config map with public SSL cert                                                                                      |
+| stacklAgent.secretHandler.conjur.conjurSslConfigMapKey            | string | `"ssl-certificate"`                                                     | Conjur config map Key. This must be the public SSL certificate value required for connecting to the Conjur follower service |
+| stacklAgent.secretHandler.conjur.conjurVerify                     | string | `"False"`                                                               | Verify Conjur requests                                                                                                      |
+| stacklAgent.secretHandler.type                                    | string | `"conjur"`                                                              | Secret handler to be used. Options are [base64, vault, conjur]                                                              |
+| stacklAgent.secretHandler.vault.vaultAddr                         | string | `"https://vault.example.com"`                                           | Vault address                                                                                                               |
+| stacklAgent.secretHandler.vault.vaultMountPoint                   | string | `"auth/kubernetes"`                                                     | Vault Kubernetes authentication config endpoint                                                                             |
+| stacklAgent.secretHandler.vault.vaultRole                         | string | `"stackl"`                                                              | Vault role to use Kubernetes authentication                                                                                 |
+| stacklAgent.stacklCliImage                                        | string | `"quay.io/stackl/stackl-cli:v0.3.0"`                                    | Stackl-CLI image                                                                                                            |
+| stacklAgent.stacklHost                                            | string | `"http://stackl-core:8080"`                                             | Stackl-core hostname. Defaults to stackl-core service                                                                       |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.4.0](https://github.com/norwoodj/helm-docs/releases/v1.4.0)
