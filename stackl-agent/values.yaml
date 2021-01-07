@@ -49,6 +49,16 @@ stacklAgent:
   redisPort: 6379
   # -- Stackl-CLI image
   stacklCliImage: quay.io/stackl/stackl-cli:v0.3.0
+  # -- Stackl-agent resource limits and requests
+  resources:
+    # -- Stackl-agent resource limits
+    limits:
+      memory: 64Mi
+      cpu: 200m
+    # -- Stackl-agent resource requests
+    requests:
+      memory: 64Mi
+      cpu: 100m
 
 # -- Example imagePullSecrets: [name: pull-secret-name]
 imagePullSecrets: []

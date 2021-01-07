@@ -58,6 +58,16 @@ stacklCore:
       secretName: stackl
   # -- Stackl core replicas
   replicaCount: 1
+  # -- Stackl resource limits and requests
+  resources:
+    # -- Stackl resource limits
+    limits:
+      memory: 256Mi
+      cpu: 300m
+    # -- Stackl resource requests
+    requests:
+      memory: 256Mi
+      cpu: 200m
 
 stacklRedis:
   # -- Stackl redis image
@@ -66,6 +76,11 @@ stacklRedis:
   name: stackl-redis
   # -- Stackl redis replicas
   replicaCount: 1
+  # -- Security context for Stackl-Redis
+  securityContext: {}
+    # runAsUser: 1000
+    # runAsGroup: 3000
+    # fsGroup: 2000
 
 stacklOpa:
   # -- Stackl OPA image
