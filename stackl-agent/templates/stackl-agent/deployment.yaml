@@ -25,9 +25,15 @@ spec:
       containers:
         - name: stackl-agent
           image: "{{ .Values.stacklAgent.image }}"
+          {{- with .Values.stacklAgent.resources }}
           resources:
             requests:
-              memory: 64Mi
+              memory: {{ .requests.memory }}
+              cpu: {{ .requests.cpu }}
+            limits:
+              memory: {{ .limits.memory }}
+              cpu: {{ .limits.cpu }}
+          {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: "STACKL_HOST"

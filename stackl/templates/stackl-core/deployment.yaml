@@ -28,9 +28,15 @@ spec:
           args:
             - /start-reload.sh
           {{- end }}
+          {{- with .Values.stacklCore.resources }}
           resources:
             requests:
-              memory: 256Mi
+              memory: {{ .requests.memory }}
+              cpu: {{ .limits.cpu }}
+            limits:
+              memory: {{ .limits.memory }}
+              cpu: {{ .limits.cpu }}
+          {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http

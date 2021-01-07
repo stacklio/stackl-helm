@@ -27,11 +27,11 @@ datastore:
 
 stacklCore:
   # -- Stackl-core image
-  image: stacklio/stackl-core:v0.2.5
+  image: quay.io/stackl/stackl-core:v0.3.0
   # -- Stackl core name
   name: stackl-core
   # -- Stackl core service type
-  serviceType: NodePort
+  serviceType: ClusterIP
   ingress:
     # -- Enable ingress creation
     enabled: true
@@ -58,18 +58,33 @@ stacklCore:
       secretName: stackl
   # -- Stackl core replicas
   replicaCount: 1
+  # -- Stackl resource limits and requests
+  resources:
+    # -- Stackl resource limits
+    limits:
+      memory: 256Mi
+      cpu: 300m
+    # -- Stackl resource requests
+    requests:
+      memory: 256Mi
+      cpu: 200m
 
 stacklRedis:
   # -- Stackl redis image
-  image: stacklio/redis:v5.0.3
+  image: quay.io/stackl/stackl-redis:v5.0.3
   # -- Stackl redis deployment name
   name: stackl-redis
   # -- Stackl redis replicas
   replicaCount: 1
+  # -- Security context for Stackl-Redis
+  securityContext: {}
+    # runAsUser: 1000
+    # runAsGroup: 3000
+    # fsGroup: 2000
 
 stacklOpa:
   # -- Stackl OPA image
-  image: stacklio/opa:v0.21.1
+  image: quay.io/stackl/stackl-opa:v0.21.1
   # -- Stackl OPA deployment name
   name: stackl-opa
   ingress:

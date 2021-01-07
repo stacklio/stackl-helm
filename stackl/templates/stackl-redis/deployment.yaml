@@ -22,6 +22,12 @@ spec:
     imagePullSecrets:
       {{- toYaml . | nindent 8 }}
     {{- end }}
+      {{- with .Values.stacklRedis.securityContext }}
+      securityContext:
+        runAsUser: {{ .runAsUser }}
+        runAsGroup: {{ .runAsGroup }}
+        fsGroup: {{ .fsGroup }}
+      {{- end }}
       containers:
         - name: stackl-redis
           image: "{{ .Values.stacklRedis.image }}"

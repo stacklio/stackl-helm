@@ -4,13 +4,13 @@ image:
 mode: prod
 
 stacklAgent:
-  image: quay.io/stackl/stackl-agent:v0.2.5
+  image: quay.io/stackl/stackl-agent:v0.3.0
   name: stackl-agent
   replicaCount: 1
   # -- Stackl-core hostname. Defaults to stackl-core service
   stacklHost: http://stackl-core:8080
   secretHandler:
-  # -- Secret handler to be used. Options are [base64, vault, conjur]
+    # -- Secret handler to be used. Options are [base64, vault, conjur]
     type: conjur
     vault:
       # -- Vault address
@@ -48,7 +48,17 @@ stacklAgent:
   # -- Stackl-Redis port
   redisPort: 6379
   # -- Stackl-CLI image
-  stacklCliImage: quay.io/stackl/stackl-cli:v0.2.5
+  stacklCliImage: quay.io/stackl/stackl-cli:v0.3.0
+  # -- Stackl-agent resource limits and requests
+  resources:
+    # -- Stackl-agent resource limits
+    limits:
+      memory: 64Mi
+      cpu: 200m
+    # -- Stackl-agent resource requests
+    requests:
+      memory: 64Mi
+      cpu: 100m
 
 # -- Example imagePullSecrets: [name: pull-secret-name]
 imagePullSecrets: []
