@@ -27,11 +27,11 @@ datastore:
 
 stacklCore:
   # -- Stackl-core image
-  image: stacklio/stackl-core:v0.3.0
+  image: quay.io/stackl/stackl-core:v0.3.0
   # -- Stackl core name
   name: stackl-core
   # -- Stackl core service type
-  serviceType: NodePort
+  serviceType: ClusterIP
   ingress:
     # -- Enable ingress creation
     enabled: true
@@ -71,7 +71,7 @@ stacklCore:
 
 stacklRedis:
   # -- Stackl redis image
-  image: stacklio/redis:v5.0.3
+  image: quay.io/stackl/stackl-redis:v5.0.3
   # -- Stackl redis deployment name
   name: stackl-redis
   # -- Stackl redis replicas
@@ -84,7 +84,7 @@ stacklRedis:
 
 stacklOpa:
   # -- Stackl OPA image
-  image: stacklio/opa:v0.21.1
+  image: quay.io/stackl/stackl-opa:v0.21.1
   # -- Stackl OPA deployment name
   name: stackl-opa
   ingress:
