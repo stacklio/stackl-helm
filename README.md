@@ -18,7 +18,7 @@ git clone https://github.com/stacklio/stackl-helm.git
 Use Helm to install this chart (Optional: make changes to `values.yaml`):
 
 ```bash
-helm install /path/to/chart/stackl stackl -n namespace
+helm install stackl /path/to/chart/stackl -n namespace
 ```
 
 For more information on values used by the chart, check out the README of the chart.
