@@ -1,7 +1,7 @@
-###
 ### This package contains all the default policies for application orchestration on provided input data
 ###
 package orchestration
+
 solutions = {"fulfilled": true, "services": result} {
 	result := {s: {"service": input.services[s].service, "targets": targets} |
 		service := input.services[s]
@@ -16,14 +16,13 @@ else = {"fulfilled": false, "msg": msg} {
 		targets := targets_for_service(service)
 	}
 	services_no_targets := { svc | tgt = result[svc].targets; tgt == []}
-	msg := sprintf("Could not find a target for services %v", [services_no_targets])
+	msg := sprintf("Couldn'\''t find a target for services %v", [services_no_targets])
 }
 #Rule: get basic suitable infrastructure target for the service
 targets_for_service(service) = targets {
 	targets := [tgt |
 		target := input.infrastructure_targets[tgt]
 		satisfies_resources(service, target)
-		satisfies_functional_requirement(service, target)
 		not satisfies_tags(input.required_tags, target)
 	]
 }
@@ -40,14 +39,6 @@ satisfies_resources(service, target) {
 	]
 	# checks if all values are true, if not, returns false
 	all(satisfied_resource_array) = true
-}
-#Function
-satisfies_functional_requirement(service, target) {
-	# Convert arrays to set
-	fr = {x | service.functional_requirements[x] }
-	cfg := {x | x := target.packages[_]}
-	# Take the intersection to see if the cfg satisfies all the functional requirements
-	fr & cfg == fr
 }
 #Function
 satisfies_tags(required_tags, target) {
