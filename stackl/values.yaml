@@ -27,11 +27,11 @@ datastore:
 
 stacklCore:
   # -- Stackl-core image
-  image: quay.io/stackl/stackl-core:v0.3.0
+  image: quay.io/stackl/stackl-core:v0.4.0
   # -- Stackl core name
   name: stackl-core
   # -- Stackl core service type
-  serviceType: ClusterIP
+  serviceType: LoadBalancer
   ingress:
     # -- Enable ingress creation
     enabled: true
