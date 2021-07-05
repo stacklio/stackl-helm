@@ -60,6 +60,10 @@ stacklAgent:
       memory: 64Mi
       cpu: 100m
 
+# -- Example serviceAccount: imagePullSecrets: [name: pull-secret-name]
+agentServiceAccount:
+  imagePullSecrets: []
+
 # -- Example imagePullSecrets: [name: pull-secret-name]
 imagePullSecrets: []
 nameOverride: ""
