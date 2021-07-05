@@ -60,6 +60,9 @@ stacklAgent:
       memory: 64Mi
       cpu: 100m
 
+# -- Example imageCredentials: [{name: regcred, registry: quay.io, username: someone, password: secure123#, email: someone@host.com}]
+imageCredentials: []
+
 # -- Example serviceAccount: imagePullSecrets: [name: pull-secret-name]
 agentServiceAccount:
   imagePullSecrets: []
