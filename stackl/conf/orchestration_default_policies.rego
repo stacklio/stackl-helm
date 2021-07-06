@@ -16,7 +16,7 @@ else = {"fulfilled": false, "msg": msg} {
 		targets := targets_for_service(service)
 	}
 	services_no_targets := { svc | tgt = result[svc].targets; tgt == []}
-	msg := sprintf("Couldn'\''t find a target for services %v", [services_no_targets])
+	msg := sprintf("Could not find a target for services %v", [services_no_targets])
 }
 #Rule: get basic suitable infrastructure target for the service
 targets_for_service(service) = targets {
