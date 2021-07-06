@@ -31,7 +31,7 @@ stacklCore:
   # -- Stackl core name
   name: stackl-core
   # -- Stackl core service type
-  serviceType: LoadBalancer
+  serviceType: ClusterIP
   ingress:
     # -- Enable ingress creation
     enabled: true
