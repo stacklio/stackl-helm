@@ -4,7 +4,7 @@ image:
 mode: prod
 
 stacklAgent:
-  image: quay.io/stackl/stackl-agent:v0.3.0
+  image: quay.io/stackl/stackl-agent:v0.4.0
   name: stackl-agent
   replicaCount: 1
   # -- Stackl-core hostname. Defaults to stackl-core service
@@ -48,7 +48,7 @@ stacklAgent:
   # -- Stackl-Redis port
   redisPort: 6379
   # -- Stackl-CLI image
-  stacklCliImage: quay.io/stackl/stackl-cli:v0.3.0
+  stacklCliImage: quay.io/stackl/stackl-cli:v0.4.0
   # -- Stackl-agent resource limits and requests
   resources:
     # -- Stackl-agent resource limits
