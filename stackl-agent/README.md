@@ -1,6 +1,6 @@
 # stackl-agent
 
-![Version: v0.3.0](https://img.shields.io/badge/Version-v0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.3.0](https://img.shields.io/badge/AppVersion-v0.3.0-informational?style=flat-square)
+![Version: v0.5.0](https://img.shields.io/badge/Version-v0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.5.0](https://img.shields.io/badge/AppVersion-v0.5.0-informational?style=flat-square)
 
 Stackl-agent Helm chart
 
@@ -24,7 +24,7 @@ Stackl-agent Helm chart
 | serviceAccount.imagePullSecrets                                   | list   | `""`                                                                                  | Example serviceAccount: imagePullSecrets: [name: pull-secret-name]                                                          |
 | stacklAgent.agentName                                             | string | `"common"`                                                                            | Name of the agent. This can be used to target an agent                                                                      |
 | stacklAgent.agentType                                             | string | `"kubernetes"`                                                                        |                                                                                                                             |
-| stacklAgent.image                                                 | string | `"quay.io/stackl/stackl-agent:v0.3.0"`                                                |                                                                                                                             |
+| stacklAgent.image                                                 | string | `"quay.io/stackl/stackl-agent:v0.5.0"`                                                |                                                                                                                             |
 | stacklAgent.name                                                  | string | `"stackl-agent"`                                                                      |                                                                                                                             |
 | stacklAgent.redisHost                                             | string | `"stackl-redis"`                                                                      | Stackl-Redis hostname. Defaults to Stackl-Redis service                                                                     |
 | stacklAgent.redisPassword                                         | string | `""`                                                                                  | Stackl-Redis password                                                                                                       |
@@ -46,7 +46,7 @@ Stackl-agent Helm chart
 | stacklAgent.secretHandler.vault.vaultAddr                         | string | `"https://vault.example.com"`                                                         | Vault address                                                                                                               |
 | stacklAgent.secretHandler.vault.vaultMountPoint                   | string | `"auth/kubernetes"`                                                                   | Vault Kubernetes authentication config endpoint                                                                             |
 | stacklAgent.secretHandler.vault.vaultRole                         | string | `"stackl"`                                                                            | Vault role to use Kubernetes authentication                                                                                 |
-| stacklAgent.stacklCliImage                                        | string | `"quay.io/stackl/stackl-cli:v0.3.0"`                                                  | Stackl-CLI image                                                                                                            |
+| stacklAgent.stacklCliImage                                        | string | `"quay.io/stackl/stackl-cli:v0.5.0"`                                                  | Stackl-CLI image                                                                                                            |
 | stacklAgent.stacklHost                                            | string | `"http://stackl-core:8080"`                                                           | Stackl-core hostname. Defaults to stackl-core service                                                                       |
 
 ----------------------------------------------
