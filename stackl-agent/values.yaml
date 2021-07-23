@@ -19,6 +19,8 @@ stacklAgent:
       vaultRole: stackl
       # -- Vault Kubernetes authentication config endpoint
       vaultMountPoint: auth/kubernetes
+      # -- Vault image
+      vaultImage: vault:latest
     conjur:
       # -- Verify Conjur requests
       conjurVerify: "False"
