@@ -77,6 +77,10 @@ spec:
             - name: "VAULT_MOUNT_POINT"
               value: "{{ . }}"
             {{- end }}
+            {{- with .Values.stacklAgent.secretHandler.vault.vaultImage }}
+            - name: "VAULT_IMAGE"
+              value: "{{ . }}"
+            {{- end }}
             {{- end }}
             {{- if eq .Values.stacklAgent.secretHandler.type "conjur" }}
             {{- with .Values.stacklAgent.secretHandler.conjur.conjurVerify }}
